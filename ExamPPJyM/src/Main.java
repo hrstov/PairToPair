@@ -12,8 +12,9 @@ public class Main {
             System.out.println("""
                     1. Dar alta vehiculo
                     2. Dar alta cliente
-                    3.   
-                    4. 
+                    3. Alquilar vehiculo determinado para un cliente determinado  
+                    4. Mostrar lista de vehiculos
+                    5. Cobrar
                     """);
 
             opcion = sc.nextLine();

@@ -65,7 +65,6 @@ public class Empresa {
 
 
 
-
         public String getNombreempresa () {
             return nombreempresa;
         }
