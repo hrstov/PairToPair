@@ -41,7 +41,7 @@ public class Empresa {
         }
 
         public boolean addVehiculo(Vehiculo vehiculo) {
-            if (!hayVehiculo(vehiculo.getMatricula())) {
+            if (vehiculo != null && !hayVehiculo(vehiculo.getMatricula())) {
                 listaVehiculos.add(vehiculo);
                 return true;
             }
