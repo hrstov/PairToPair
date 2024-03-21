@@ -8,16 +8,21 @@ public class Main {
         Scanner sc = new Scanner(System.in);
         boolean continuar = true;
         String opcion;
+        //-----------------------------------------------------------------------
+        //VERSION COMPILAR
+        //-----------------------------------------------------------------------
 
         Empresa empresa = new Empresa("Sofenkro INC.");
 
         while(continuar) {
             System.out.println("""
+                    
                     1. Dar alta vehiculo
                     2. Dar alta cliente
                     3. Alquilar vehiculo determinado para un cliente determinado  
                     4. Mostrar lista de vehiculos
                     5. Cobrar
+                    
                     """);
 
             opcion = sc.nextLine();
@@ -104,24 +109,24 @@ public class Main {
 
                 case "2":
 
-
                     String nombre, apellidos, email, telefono, dni = "", nTarjeta;
-                    if (!empresa.hayCliente(dni)) {
-                        System.out.println("Introduzca los datos del cliente a continuación");
-                        System.out.print(" DNI: ");
-                        dni = sc.nextLine();
-                        System.out.print(" Nombre: ");
-                        nombre = sc.nextLine();
-                        System.out.print(" Apellidos: ");
-                        apellidos = sc.nextLine();
-                        System.out.print(" Email: ");
-                        email = sc.nextLine();
-                        System.out.print(" Teléfono: ");
-                        telefono = sc.nextLine();
-                        System.out.print(" Num de tajeta: ");
-                        nTarjeta = sc.nextLine();
 
-                        Cliente cliente = new Cliente(nombre, apellidos, email, telefono, dni, nTarjeta);
+                    System.out.println("Introduzca los datos del cliente a continuación");
+                    System.out.print(" DNI: ");
+                    dni = sc.nextLine();
+                    System.out.print(" Nombre: ");
+                    nombre = sc.nextLine();
+                    System.out.print(" Apellidos: ");
+                    apellidos = sc.nextLine();
+                    System.out.print(" Email: ");
+                    email = sc.nextLine();
+                    System.out.print(" Teléfono: ");
+                    telefono = sc.nextLine();
+                    System.out.print(" Num de tajeta: ");
+                    nTarjeta = sc.nextLine();
+
+                    Cliente cliente = new Cliente(nombre, apellidos, email, telefono, dni, nTarjeta);
+                    if (!empresa.hayCliente(dni)) {
                         empresa.addCliente(dni, cliente);
                         System.out.println("Cliente añadido con éxito.");
                     }else System.out.println("El cliente ya existe.");
@@ -135,33 +140,50 @@ public class Main {
                 case "4":
                     System.out.println("""
                                Escoja el tipo de vehículo: 
-                                a. Coche
-                                b. Furgón
-                                c. Camión
+                                Coche
+                                Furgón
+                                Camión
                             """);
                     String tipoveh = sc.nextLine();
 
-                    System.out.println(empresa.listaVehiculos(/*,*/tipoveh));
-                    /*
-                    String opcion4 = sc.nextLine();
-                    switch (opcion4){
-                        case "a":
-                            System.out.println("");
+                    //System.out.println(empresa.listaVehiculos(/*,*/tipoveh));
+
+                    switch (tipoveh){
+                        case "coche":
+                            int plazas; String tipoMCoche;
+                            System.out.println("Coches con datos específicos --> ");
+                            System.out.print(" Número de plazas: ");
+                            plazas = Integer.valueOf(sc.nextLine());
+                            System.out.print(" Tipo: ");
+                            tipoMCoche = sc.nextLine();
+                            System.out.println(empresa.listaCoches(tipoveh, plazas, tipoMCoche));
                             break;
 
-                        case "b":
-
+                        case "furgon":
+                            float cargamayor; int plazasfurg;
+                            System.out.println("Furgones con datos específicos --> ");
+                            System.out.print(" KG de carga máx: ");
+                            cargamayor = Float.valueOf(sc.nextLine());
+                            System.out.print(" Plazas: ");
+                            plazasfurg = Integer.valueOf(sc.nextLine());
+                            System.out.println(empresa.listaFurgon(tipoveh,cargamayor,plazasfurg));
                             break;
 
-                        case "c":
-
+                        case "camion":
+                            float cargamayorcam, longitudcam;
+                            System.out.println("Camiones con datos específicos --> ");
+                            System.out.print(" KG de carga máx: ");
+                            cargamayorcam = Float.valueOf(sc.nextLine());
+                            System.out.print(" Longitud: ");
+                            longitudcam = Integer.valueOf(sc.nextLine());
+                            System.out.println(empresa.listaCamion(tipoveh,cargamayorcam,longitudcam));
                             break;
 
                         default:
                             System.out.println("Opción no válida");
                     }
 
-*/
+
                     break;
 
                 default:

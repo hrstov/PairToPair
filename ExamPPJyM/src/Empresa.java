@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
 public class Empresa {
 
     private String nombreempresa;
@@ -66,7 +67,7 @@ public class Empresa {
     }
 
 
-    public String listaVehiculos(String tipo){
+    public String listaVehiculosGenerico(String tipo) {
         StringBuilder listavehiculosString = new StringBuilder();
     /*getters de vehiculo genericos
     String matricula, String modelo, String marca, float km, float precio, String tipoMotor
@@ -75,8 +76,9 @@ public class Empresa {
             if (vehiculo != null) {
                 if (tipo.equalsIgnoreCase("coche") && vehiculo instanceof Coche) {
                     Coche coche = (Coche) vehiculo;
+
                     //int plazas, int puertas, float volumenM, String tipoM
-                    listavehiculosString.append("Coche con matrícula: ").append(coche.getMatricula()).append(", Modelo: ")
+                    listavehiculosString.append("COCHE con matrícula: ").append(coche.getMatricula()).append(", Modelo: ")
                             .append(coche.getModelo()).append(", Marca: ").append(coche.getMarca()).append(", KMs: ")
                             .append(coche.getKm()).append(", Precio: ").append(coche.getPrecio()).append(", Tipo Motor: ")
                             .append(coche.getTipoMotor()).append(", Plazas: ").append(coche.getPlazas()).append(", Puertas: ")
@@ -85,24 +87,98 @@ public class Empresa {
 
                 } else if (tipo.equalsIgnoreCase("furgon") && vehiculo instanceof Furgon) {
                     Furgon furgon = (Furgon) vehiculo;
-
+                    //float cargaMax, int plazas
+                    listavehiculosString.append("FURGON con matrícula: ").append(furgon.getMatricula()).append(", Modelo: ")
+                            .append(furgon.getModelo()).append(", Marca: ").append(furgon.getMarca()).append(", KMs: ")
+                            .append(furgon.getKm()).append(", Precio: ").append(furgon.getPrecio()).append(", Tipo Motor: ")
+                            .append(furgon.getTipoMotor()).append(", Carga máxima: ").append(furgon.getCargaMax()).append(", Plazas: ")
+                            .append(furgon.getPlazas());
 
                 } else if (tipo.equalsIgnoreCase("camion") && vehiculo instanceof Camion) {
                     Camion camion = (Camion) vehiculo;
-
-
+                    //float cargaMax, float longi
+                    listavehiculosString.append("CAMIÓN con matrícula: ").append(camion.getMatricula()).append(", Modelo: ")
+                            .append(camion.getModelo()).append(", Marca: ").append(camion.getMarca()).append(", KMs: ")
+                            .append(camion.getKm()).append(", Precio: ").append(camion.getPrecio()).append(", Tipo Motor: ")
+                            .append(camion.getTipoMotor()).append(", Carga máxima: ").append(camion.getCargaMax()).append(", Longitud: ")
+                            .append(camion.getLongi());
                 }
             }
         }
-
         return listavehiculosString.toString();
     }
+    public String listaCoches(String tipo, int plazas, String tipoMCoche) {
+        StringBuilder listaCoches = new StringBuilder();
+    /*getters de vehiculo genericos
+    String matricula, String modelo, String marca, float km, float precio, String tipoMotor
+    */
+        for (Vehiculo vehiculo : listaVehiculos) {
+            if (vehiculo != null) {
+                if (tipo.equalsIgnoreCase("coche") && vehiculo instanceof Coche) {
+                    Coche coche = (Coche) vehiculo;
+                    if (coche.getPlazas()>=plazas && tipoMCoche.equalsIgnoreCase(coche.getTipoMotor())) {
+                        //int plazas, int puertas, float volumenM, String tipoM
+                        listaCoches.append("COCHE con matrícula: ").append(coche.getMatricula()).append(", Modelo: ")
+                                .append(coche.getModelo()).append(", Marca: ").append(coche.getMarca()).append(", KMs: ")
+                                .append(coche.getKm()).append(", Precio: ").append(coche.getPrecio()).append(", Tipo Motor: ")
+                                .append(coche.getTipoMotor()).append(", Plazas: ").append(coche.getPlazas()).append(", Puertas: ")
+                                .append(coche.getPuertas()).append(", Volumen: ").append(coche.getVolumenM()).append(", Tipo de coche: ")
+                                .append(coche.getTipoM());
+                    }
+                }
+            }
+        }
+        return listaCoches.toString();
+    }
 
-    public String getNombreempresa () {
+    public String listaFurgon(String tipo, float cargamayor, int plazas) {
+        StringBuilder listaFurgones = new StringBuilder();
+        //String matricula, String modelo, String marca, float km, float precio, String tipoMotor
+        for (Vehiculo vehiculo : listaVehiculos) {
+            if (vehiculo != null) {
+                if (tipo.equalsIgnoreCase("furgon") && vehiculo instanceof Furgon) {
+                    Furgon furgon = (Furgon) vehiculo;
+                    if (furgon.getCargaMax()>=cargamayor && furgon.getPlazas()>=plazas) {
+                        //float cargaMax, int plazas
+                        listaFurgones.append("FURGON con matrícula: ").append(furgon.getMatricula()).append(", Modelo: ")
+                                .append(furgon.getModelo()).append(", Marca: ").append(furgon.getMarca()).append(", KMs: ")
+                                .append(furgon.getKm()).append(", Precio: ").append(furgon.getPrecio()).append(", Tipo Motor: ")
+                                .append(furgon.getTipoMotor()).append(", Carga máxima: ").append(furgon.getCargaMax()).append(", Plazas: ")
+                                .append(furgon.getPlazas());
+                    }
+                }
+            }
+        }
+        return listaFurgones.toString();
+    }
+
+    public String listaCamion(String tipo, float cargamayor, float longitud ) {
+        StringBuilder listaCamiones = new StringBuilder();
+        //String matricula, String modelo, String marca, float km, float precio, String tipoMotor
+        for (Vehiculo vehiculo : listaVehiculos) {
+            if (vehiculo != null) {
+                if (tipo.equalsIgnoreCase("camion") && vehiculo instanceof Camion) {
+                    Camion camion = (Camion) vehiculo;
+                    if (camion.getCargaMax()>=cargamayor && camion.getLongi()<longitud) {
+                        //float cargaMax, float longi
+                        listaCamiones.append("CAMIÓN con matrícula: ").append(camion.getMatricula()).append(", Modelo: ")
+                                .append(camion.getModelo()).append(", Marca: ").append(camion.getMarca()).append(", KMs: ")
+                                .append(camion.getKm()).append(", Precio: ").append(camion.getPrecio()).append(", Tipo Motor: ")
+                                .append(camion.getTipoMotor()).append(", Carga máxima: ").append(camion.getCargaMax()).append(", Longitud: ")
+                                .append(camion.getLongi());
+                    }
+                }
+            }
+        }
+        return listaCamiones.toString();
+    }
+
+
+    public String getNombreempresa() {
         return nombreempresa;
     }
 
-    public void setNombreempresa (String nombreempresa){
+    public void setNombreempresa(String nombreempresa) {
         this.nombreempresa = nombreempresa;
     }
 }
