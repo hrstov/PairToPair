@@ -1,3 +1,5 @@
+package org.example;
+
 import java.util.Scanner;
 
 public class Main {
@@ -6,6 +8,7 @@ public class Main {
         Scanner sc = new Scanner(System.in);
         boolean continuar = true;
         String opcion;
+
         Empresa empresa = new Empresa("Sofenkro INC.");
 
         while(continuar) {
@@ -28,8 +31,9 @@ public class Main {
 
                     String sMat, sModelo, sMarca, sTipoMotor;
                     //tipos de motor: electrico, hibrido enchufable, hibrido, gasolina o diesel
-                    int iKmsRecorr;
+                    float iKmsRecorr;
                     float flPrecioDia;
+                    //orden String matricula, String modelo, String marca, float km, float precio, String tipoMotor
 
                     System.out.print("Datos del vehículo" +
                             "\n Matrícula: ");
@@ -62,35 +66,35 @@ public class Main {
                         System.out.print(" Volumen del maletero: ");
                         flVolumenMaletero = Float.valueOf(sc.nextLine());
 
-                        Coche nuevocoche = new Coche(sMat, sModelo, sMarca, sTipoMotor, iKmsRecorr, flPrecioDia, sTipoCoche, byPlazasMaximas, byPuertas, flVolumenMaletero);
+                        Coche nuevocoche = new Coche(sMat, sModelo, sMarca, iKmsRecorr, flPrecioDia, sTipoMotor, byPlazasMaximas, byPuertas, flVolumenMaletero, sTipoCoche);
                         empresa.addVehiculo(nuevocoche);
                         System.out.println("Coche creado con éxito.");
 
                     } else if (respuesta.compareToIgnoreCase("furgon") == 0) {
 
-                        double doubCargaMaximaFurgon;
+                        float flCargaMaximaFurgon;
                         byte byPlazasFurgon;
                         System.out.print("Datos del furgón" +
                                 "\n Carga máxima: ");
-                        doubCargaMaximaFurgon = Double.valueOf(sc.nextLine());
+                        flCargaMaximaFurgon = Float.valueOf(sc.nextLine());
                         System.out.print(" Número de plazas: ");
                         byPlazasFurgon = Byte.valueOf(sc.nextLine());
 
-                        Furgon nuevofurgon = new Furgon(sMat, sModelo, sMarca, sTipoMotor, iKmsRecorr, flPrecioDia, doubCargaMaximaFurgon, byPlazasFurgon);
+                        Furgon nuevofurgon = new Furgon(sMat, sModelo, sMarca, iKmsRecorr, flPrecioDia, sTipoMotor, flCargaMaximaFurgon, byPlazasFurgon);
                         empresa.addVehiculo(nuevofurgon);
                         System.out.println("Furgón añadido con éxito.");
 
                     } else if (respuesta.compareToIgnoreCase("camion") == 0) {
 
-                        double doubCargaMaximaCamion;
+                        float flCargaMaximaCamion;
                         float flLongitud;
                         System.out.print("Datos del camión" +
                                 "\n Carga máxima: ");
-                        doubCargaMaximaCamion = Double.valueOf(sc.nextLine());
+                        flCargaMaximaCamion = Float.valueOf(sc.nextLine());
                         System.out.print(" Longitud: ");
                         flLongitud = Float.valueOf(sc.nextLine());
 
-                        Camion nuevocamion = new Camion(sMat, sModelo, sMarca, sTipoMotor, iKmsRecorr, flPrecioDia, doubCargaMaximaCamion, flLongitud);
+                        Camion nuevocamion = new Camion(sMat, sModelo, sMarca, iKmsRecorr, flPrecioDia, sTipoMotor, flCargaMaximaCamion, flLongitud);
                         empresa.addVehiculo(nuevocamion);
                         System.out.println("Camión añadido con éxito.");
 
@@ -100,25 +104,27 @@ public class Main {
 
                 case "2":
 
-                    String nombre, apellidos, email, telefono, dni, nTarjeta;
-                    System.out.println("Introduzca los datos del cliente a continuación");
-                    System.out.print(" DNI: ");
-                    dni = sc.nextLine();
-                    System.out.print(" Nombre: ");
-                    nombre = sc.nextLine();
-                    System.out.print(" Apellidos: ");
-                    apellidos = sc.nextLine();
-                    System.out.print(" Email: ");
-                    email = sc.nextLine();
-                    System.out.print(" Teléfono: ");
-                    telefono = sc.nextLine();
-                    System.out.print(" Num de tajeta: ");
-                    nTarjeta = sc.nextLine();
 
-                    Cliente cliente = new Cliente(nombre, apellidos, email, telefono, dni, nTarjeta);
-                    empresa.addCliente(dni, cliente);
-                    System.out.println("Cliente añadido con éxito.");
+                    String nombre, apellidos, email, telefono, dni = "", nTarjeta;
+                    if (!empresa.hayCliente(dni)) {
+                        System.out.println("Introduzca los datos del cliente a continuación");
+                        System.out.print(" DNI: ");
+                        dni = sc.nextLine();
+                        System.out.print(" Nombre: ");
+                        nombre = sc.nextLine();
+                        System.out.print(" Apellidos: ");
+                        apellidos = sc.nextLine();
+                        System.out.print(" Email: ");
+                        email = sc.nextLine();
+                        System.out.print(" Teléfono: ");
+                        telefono = sc.nextLine();
+                        System.out.print(" Num de tajeta: ");
+                        nTarjeta = sc.nextLine();
 
+                        Cliente cliente = new Cliente(nombre, apellidos, email, telefono, dni, nTarjeta);
+                        empresa.addCliente(dni, cliente);
+                        System.out.println("Cliente añadido con éxito.");
+                    }else System.out.println("El cliente ya existe.");
                     break;
 
                 case "3":
@@ -135,7 +141,8 @@ public class Main {
                             """);
                     String tipoveh = sc.nextLine();
 
-                    System.out.println(empresa.listaVehiculos(,tipoveh));
+                    System.out.println(empresa.listaVehiculos(/*,*/tipoveh));
+                    /*
                     String opcion4 = sc.nextLine();
                     switch (opcion4){
                         case "a":
@@ -154,13 +161,13 @@ public class Main {
                             System.out.println("Opción no válida");
                     }
 
-
+*/
                     break;
 
                 default:
                     System.out.println("Número fuera de parámetros.");
             }
         }
-        
+
     }
 }

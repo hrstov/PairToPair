@@ -1,3 +1,5 @@
+package org.example;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -73,7 +75,13 @@ public class Empresa {
             if (vehiculo != null) {
                 if (tipo.equalsIgnoreCase("coche") && vehiculo instanceof Coche) {
                     Coche coche = (Coche) vehiculo;
-                    listavehiculosString.append("Coche con matrícula: ").append(coche.getMatricula());
+                    //int plazas, int puertas, float volumenM, String tipoM
+                    listavehiculosString.append("Coche con matrícula: ").append(coche.getMatricula()).append(", Modelo: ")
+                            .append(coche.getModelo()).append(", Marca: ").append(coche.getMarca()).append(", KMs: ")
+                            .append(coche.getKm()).append(", Precio: ").append(coche.getPrecio()).append(", Tipo Motor: ")
+                            .append(coche.getTipoMotor()).append(", Plazas: ").append(coche.getPlazas()).append(", Puertas: ")
+                            .append(coche.getPuertas()).append(", Volumen: ").append(coche.getVolumenM()).append(", Tipo de coche: ")
+                            .append(coche.getTipoM());
 
                 } else if (tipo.equalsIgnoreCase("furgon") && vehiculo instanceof Furgon) {
                     Furgon furgon = (Furgon) vehiculo;
@@ -90,11 +98,11 @@ public class Empresa {
         return listavehiculosString.toString();
     }
 
-        public String getNombreempresa () {
-            return nombreempresa;
-        }
-
-        public void setNombreempresa (String nombreempresa){
-            this.nombreempresa = nombreempresa;
-        }
+    public String getNombreempresa () {
+        return nombreempresa;
     }
+
+    public void setNombreempresa (String nombreempresa){
+        this.nombreempresa = nombreempresa;
+    }
+}
