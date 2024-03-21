@@ -121,6 +121,40 @@ public class Main {
 
                     break;
 
+                case "3":
+
+                    break;
+
+
+                case "4":
+                    System.out.println("""
+                               Escoja el tipo de vehículo: 
+                                a. Coche
+                                b. Furgón
+                                c. Camión
+                            """);
+                    String opcion4 = sc.nextLine();
+
+                    switch (opcion4){
+                        case "a":
+                            System.out.println("");
+                            break;
+
+                        case "b":
+
+                            break;
+
+                        case "c":
+
+                            break;
+
+                        default:
+                            System.out.println("Opción no válida");
+                    }
+
+
+                    break;
+
                 default:
                     System.out.println("Número fuera de parámetros.");
             }
