@@ -1,3 +1,5 @@
+package org.example;
+
 public class Cliente {
     private String nombre;
     private String apellidos;
@@ -6,6 +8,8 @@ public class Cliente {
     private String dni;
     private String nTarjeta;
 
+    private String matriculacochealquilado;
+
     public Cliente(String nombre, String apellidos, String email, String telefono, String dni, String nTarjeta) {
         this.nombre = nombre;
         this.apellidos = apellidos;
@@ -13,7 +17,22 @@ public class Cliente {
         this.telefono = telefono;
         this.dni = dni;
         this.nTarjeta = nTarjeta;
+        this.matriculacochealquilado = "";
     }
+
+
+    public String getMatriculacochealquilado() {
+        return matriculacochealquilado;
+    }
+
+    public void setMatriculacochealquilado(String matriculacochealquilado) {
+        this.matriculacochealquilado = matriculacochealquilado;
+    }
+
+
+
+
+
 
     public String getNombre() {
         return nombre;
@@ -62,4 +81,6 @@ public class Cliente {
     public void setnTarjeta(String nTarjeta) {
         this.nTarjeta = nTarjeta;
     }
+
+
 }
