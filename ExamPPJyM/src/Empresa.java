@@ -66,16 +66,21 @@ public class Empresa {
 
     public String listaVehiculos(String tipo){
         StringBuilder listavehiculosString = new StringBuilder();
-
+    /*getters de vehiculo genericos
+    String matricula, String modelo, String marca, float km, float precio, String tipoMotor
+    */
         for (Vehiculo vehiculo : listaVehiculos) {
             if (vehiculo != null) {
                 if (tipo.equalsIgnoreCase("coche") && vehiculo instanceof Coche) {
-                    listavehiculosString.append
+                    Coche coche = (Coche) vehiculo;
+                    listavehiculosString.append("Coche con matrícula: ").append(coche.getMatricula());
 
                 } else if (tipo.equalsIgnoreCase("furgon") && vehiculo instanceof Furgon) {
+                    Furgon furgon = (Furgon) vehiculo;
 
 
                 } else if (tipo.equalsIgnoreCase("camion") && vehiculo instanceof Camion) {
+                    Camion camion = (Camion) vehiculo;
 
 
                 }
