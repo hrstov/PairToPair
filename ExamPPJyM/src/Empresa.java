@@ -64,6 +64,26 @@ public class Empresa {
     }
 
 
+    public String listaVehiculos(String tipo){
+        StringBuilder listavehiculosString = new StringBuilder();
+
+        for (Vehiculo vehiculo : listaVehiculos) {
+            if (vehiculo != null) {
+                if (tipo.equalsIgnoreCase("coche") && vehiculo instanceof Coche) {
+                    listavehiculosString.append
+
+                } else if (tipo.equalsIgnoreCase("furgon") && vehiculo instanceof Furgon) {
+
+
+                } else if (tipo.equalsIgnoreCase("camion") && vehiculo instanceof Camion) {
+
+
+                }
+            }
+        }
+
+        return listavehiculosString.toString();
+    }
 
         public String getNombreempresa () {
             return nombreempresa;

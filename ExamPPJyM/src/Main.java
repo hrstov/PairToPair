@@ -133,8 +133,10 @@ public class Main {
                                 b. Furgón
                                 c. Camión
                             """);
-                    String opcion4 = sc.nextLine();
+                    String tipoveh = sc.nextLine();
 
+                    System.out.println(empresa.listaVehiculos(,tipoveh));
+                    String opcion4 = sc.nextLine();
                     switch (opcion4){
                         case "a":
                             System.out.println("");
