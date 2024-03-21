@@ -62,7 +62,19 @@ public class Empresa {
         }return 0;
     }
 
+
         public String getNombreempresa () {
+
+        public boolean addVehiculo(Vehiculo vehiculo) {
+            if (vehiculo != null && !hayVehiculo(vehiculo.getMatricula())) {
+                listaVehiculos.add(vehiculo);
+                return true;
+            }
+            return false;
+        }
+
+
+        public String getNombreempresa() {
             return nombreempresa;
         }
 
