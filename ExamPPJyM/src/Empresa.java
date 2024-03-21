@@ -149,7 +149,7 @@ public class Empresa {
                         //int plazas, int puertas, float volumenM, String tipoM
                         listaCoches.append("COCHE con matrícula: ").append(coche.getMatricula()).append(", Modelo: ")
                                 .append(coche.getModelo()).append(", Marca: ").append(coche.getMarca()).append(", KMs: ")
-                                .append(coche.getKm()).append(", Precio: ").append(coche.getPrecio()).append(", Tipo Motor: ")
+                                .append(coche.getKm()).append("m, Precio: ").append(coche.getPrecio()).append(", Tipo Motor: ")
                                 .append(coche.getTipoMotor()).append(", Plazas: ").append(coche.getPlazas()).append(", Puertas: ")
                                 .append(coche.getPuertas()).append(", Volumen: ").append(coche.getVolumenM()).append(", Tipo de coche: ")
                                 .append(coche.getTipoM());
@@ -171,7 +171,7 @@ public class Empresa {
                         //float cargaMax, int plazas
                         listaFurgones.append("FURGON con matrícula: ").append(furgon.getMatricula()).append(", Modelo: ")
                                 .append(furgon.getModelo()).append(", Marca: ").append(furgon.getMarca()).append(", KMs: ")
-                                .append(furgon.getKm()).append(", Precio: ").append(furgon.getPrecio()).append(", Tipo Motor: ")
+                                .append(furgon.getKm()).append("m, Precio: ").append(furgon.getPrecio()).append(", Tipo Motor: ")
                                 .append(furgon.getTipoMotor()).append(", Carga máxima: ").append(furgon.getCargaMax()).append(", Plazas: ")
                                 .append(furgon.getPlazas());
                     }
@@ -192,7 +192,7 @@ public class Empresa {
                         //float cargaMax, float longi
                         listaCamiones.append("CAMIÓN con matrícula: ").append(camion.getMatricula()).append(", Modelo: ")
                                 .append(camion.getModelo()).append(", Marca: ").append(camion.getMarca()).append(", KMs: ")
-                                .append(camion.getKm()).append(", Precio: ").append(camion.getPrecio()).append(", Tipo Motor: ")
+                                .append(camion.getKm()).append("m, Precio: ").append(camion.getPrecio()).append(", Tipo Motor: ")
                                 .append(camion.getTipoMotor()).append(", Carga máxima: ").append(camion.getCargaMax()).append(", Longitud: ")
                                 .append(camion.getLongi());
                     }
