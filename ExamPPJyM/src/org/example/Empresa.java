@@ -44,6 +44,14 @@ public class Empresa {
         }
         return false;
     }
+    public boolean hayVehiculoAlquilado(String matricula) {
+        for (Vehiculo v : listaVEHAlquilados) {
+            if (matricula.equalsIgnoreCase(v.getMatricula())) {
+                return true;
+            }
+        }
+        return false;
+    }
 
     public boolean addVehiculo(Vehiculo vehiculo) {
         if (!hayVehiculo(vehiculo.getMatricula())) {

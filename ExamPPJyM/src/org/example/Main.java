@@ -18,7 +18,7 @@ public class Main {
                     2. Dar alta cliente
                     3. Alquilar vehiculo determinado para un cliente determinado  
                     4. Mostrar lista de vehiculos
-                    5. Cobrar
+                    5. Devolver vehículo y mostrar precio a cobrar
                                         
                     """);
 
@@ -202,9 +202,9 @@ public class Main {
                     if (empresa.hayCliente(dnidev)) {
                         System.out.print("Ahora la matrícula del vehículo a devolver: ");
                         String matrdev = sc.nextLine();
-                        if (empresa.hayVehiculo(matrdev)) {
+                        if (empresa.hayVehiculoAlquilado(matrdev)) {
 
-                            
+/*
                             System.out.print("Indique la fecha de inicio: ");
                             String fechainicio = sc.nextLine();
                             System.out.print("Ahora el número de días que va a ser alquilado: ");
@@ -212,7 +212,7 @@ public class Main {
                             if (empresa.alquilarVehiculo(dnidev, matrdev, fechainicio, diasalq)) {
                                 System.out.println("Reserva realizada con éxito.");
                             } else System.out.println("No se ha podido realizar la reserva.");
-
+*/
 
 
                         } else System.out.println("El vehículo no está creado todavía.");
