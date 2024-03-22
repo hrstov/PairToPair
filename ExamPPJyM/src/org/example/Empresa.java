@@ -1,9 +1,6 @@
 package org.example;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class Empresa {
 
@@ -11,6 +8,7 @@ public class Empresa {
     private Map<String, Cliente> mapaClientes;
     private List<Vehiculo> listaVehiculos;
     private List<Vehiculo> listaVEHAlquilados;
+    private Calendar fechaInicio;
 
 
     public Empresa(String nombreempresa) {
@@ -18,6 +16,7 @@ public class Empresa {
         this.mapaClientes = new HashMap<>();
         this.listaVehiculos = new ArrayList<>();
         this.listaVEHAlquilados = new ArrayList<>();
+
     }
 
 
@@ -98,7 +97,7 @@ public class Empresa {
         return false;
     }
 
-    public boolean returnVehiculo(String matricula/*, */) {
+    public boolean returnVehiculo(String matricula) {
         for (Vehiculo veh : listaVehiculos) {
             if (veh != null && matricula.equalsIgnoreCase(veh.getMatricula())) {
                // listaVEHAlquilados.remove(veh);
@@ -118,6 +117,42 @@ public class Empresa {
         return false;
     }
 
+    /*
+    public boolean returnVehiculoConFecha(String matricula, Calendar fechaInicio, float km) {
+        for (Vehiculo veh : listaVehiculos) {
+            if (veh != null && matricula.equalsIgnoreCase(veh.getMatricula())) {
+                //Si se pasa de dias iniciales que ha al principio ha alquilado hacer un 50% mas del precio
+                Calendar ahora = Calendar.getInstance();
+                if (ahora.compareTo(fechaInicio) == 0) {
+                    veh.setKm(km);
+                    if (veh.getKm() > 500) {
+                        float precioMas = veh.getPrecio() + (veh.getPrecio() * 20 / 100);
+                        return precioMas;
+                    } else {
+                        return veh.getPrecio();
+                    }
+                }
+
+                return 0;
+
+
+                // listaVEHAlquilados.remove(veh);
+                // listaVehiculos.add(veh);
+                //set a null del v alquilado
+                for (Cliente cli : mapaClientes.values()) {
+                    cli.setvAlquilado(null);
+
+                }
+                if (veh.getKm() > 500) {
+
+                }
+
+
+                return false;
+            }
+        }
+    }
+*/
 
     public String listaVehiculosGenerico(String tipo) {
         StringBuilder listavehiculosString = new StringBuilder();
