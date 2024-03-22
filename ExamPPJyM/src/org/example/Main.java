@@ -204,6 +204,9 @@ public class Main {
                         String matrdev = sc.nextLine();
                         if (empresa.hayVehiculoAlquilado(matrdev)) {
 
+                            /*fecha de entrega, se ha devuelto tal dia o usar now de calendar (usar metodo pasar String a fecha)*/
+
+
 /*
                             System.out.print("Indique la fecha de inicio: ");
                             String fechainicio = sc.nextLine();
