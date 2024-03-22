@@ -11,20 +11,20 @@ public class Main {
 
         Empresa empresa = new Empresa("Sofenkro INC.");
 
-        while(continuar) {
+        while (continuar) {
             System.out.println("""
-                    
+                                        
                     1. Dar alta vehiculo
                     2. Dar alta cliente
                     3. Alquilar vehiculo determinado para un cliente determinado  
                     4. Mostrar lista de vehiculos
                     5. Cobrar
-                    
+                                        
                     """);
 
             opcion = sc.nextLine();
 
-            switch (opcion){
+            switch (opcion) {
                 case "0":
                     continuar = false;
                     break;
@@ -126,11 +126,26 @@ public class Main {
                     if (!empresa.hayCliente(dni)) {
                         empresa.addCliente(dni, cliente);
                         System.out.println("Cliente añadido con éxito.");
-                    }else System.out.println("El cliente ya existe.");
+                    } else System.out.println("El cliente ya existe.");
                     break;
 
                 case "3":
 
+                    System.out.print("Introduzca el dni del cliente: ");
+                    String dnialq = sc.nextLine();
+                    if (empresa.hayCliente(dnialq)) {
+                        System.out.print("Ahora la matrícula del vehículo a alquilar: ");
+                        String matralq = sc.nextLine();
+                        if (empresa.hayVehiculo(matralq)) {
+                            System.out.print("Indique la fecha de inicio: ");
+                            String fechainicio = sc.nextLine();
+                            System.out.print("Ahora el número de días que va a ser alquilado: ");
+                            int diasalq = Integer.valueOf(sc.nextLine());
+                            if (empresa.alquilarVehiculo(dnialq, matralq, fechainicio, diasalq)) {
+                                System.out.println("Reserva realizada con éxito.");
+                            } else System.out.println("No se ha podido realizar la reserva.");
+                        } else System.out.println("El vehículo no está creado todavía.");
+                    } else System.out.println("El cliente no existe.");
                     break;
 
 
@@ -143,9 +158,10 @@ public class Main {
                             """);
                     String tipoveh = sc.nextLine();
 
-                    switch (tipoveh){
+                    switch (tipoveh) {
                         case "coche":
-                            int plazas; String tipoMCoche;
+                            int plazas;
+                            String tipoMCoche;
                             System.out.println("Coches con datos específicos --> ");
                             System.out.print(" Número de plazas: ");
                             plazas = Integer.valueOf(sc.nextLine());
@@ -155,13 +171,14 @@ public class Main {
                             break;
 
                         case "furgon":
-                            float cargamayor; int plazasfurg;
+                            float cargamayor;
+                            int plazasfurg;
                             System.out.println("Furgones con datos específicos --> ");
                             System.out.print(" KG de carga máx: ");
                             cargamayor = Float.valueOf(sc.nextLine());
                             System.out.print(" Plazas: ");
                             plazasfurg = Integer.valueOf(sc.nextLine());
-                            System.out.println(empresa.listaFurgon(tipoveh,cargamayor,plazasfurg));
+                            System.out.println(empresa.listaFurgon(tipoveh, cargamayor, plazasfurg));
                             break;
 
                         case "camion":
@@ -171,13 +188,35 @@ public class Main {
                             cargamayorcam = Float.valueOf(sc.nextLine());
                             System.out.print(" Longitud: ");
                             longitudcam = Integer.valueOf(sc.nextLine());
-                            System.out.println(empresa.listaCamion(tipoveh,cargamayorcam,longitudcam));
+                            System.out.println(empresa.listaCamion(tipoveh, cargamayorcam, longitudcam));
                             break;
 
                         default:
                             System.out.println("Opción no válida");
                     }
+                    break;
 
+                case "5":
+                    System.out.print("Introduzca el dni del cliente: ");
+                    String dnidev = sc.nextLine();
+                    if (empresa.hayCliente(dnidev)) {
+                        System.out.print("Ahora la matrícula del vehículo a devolver: ");
+                        String matrdev = sc.nextLine();
+                        if (empresa.hayVehiculo(matrdev)) {
+
+                            
+                            System.out.print("Indique la fecha de inicio: ");
+                            String fechainicio = sc.nextLine();
+                            System.out.print("Ahora el número de días que va a ser alquilado: ");
+                            int diasalq = Integer.valueOf(sc.nextLine());
+                            if (empresa.alquilarVehiculo(dnidev, matrdev, fechainicio, diasalq)) {
+                                System.out.println("Reserva realizada con éxito.");
+                            } else System.out.println("No se ha podido realizar la reserva.");
+
+
+
+                        } else System.out.println("El vehículo no está creado todavía.");
+                    } else System.out.println("El cliente no existe.");
 
                     break;
 

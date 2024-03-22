@@ -9,6 +9,7 @@ public class Cliente {
     private String nTarjeta;
 
     private String matriculacochealquilado;
+    private Vehiculo vAlquilado;
 
     public Cliente(String nombre, String apellidos, String email, String telefono, String dni, String nTarjeta) {
         this.nombre = nombre;
@@ -18,6 +19,7 @@ public class Cliente {
         this.dni = dni;
         this.nTarjeta = nTarjeta;
         this.matriculacochealquilado = "";
+        this.vAlquilado = null;
     }
 
 
@@ -30,6 +32,13 @@ public class Cliente {
     }
 
 
+    public Vehiculo getvAlquilado() {
+        return vAlquilado;
+    }
+
+    public void setvAlquilado(Vehiculo vAlquilado) {
+        this.vAlquilado = vAlquilado;
+    }
 
 
 

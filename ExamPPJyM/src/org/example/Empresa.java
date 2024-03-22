@@ -69,7 +69,7 @@ public class Empresa {
     }
 
 
-    public boolean alquilarVehiculo(String id, String matricula, String fechainicio, int kmsrecorr) {
+    public boolean alquilarVehiculo(String id, String matricula, String fechainicio/*no se usa de momento*/, int dia) {
         if (hayCliente(id)) {
             for (Vehiculo vehiculo : listaVehiculos) {
                 if (matricula.equalsIgnoreCase(vehiculo.getMatricula())) {
@@ -77,29 +77,36 @@ public class Empresa {
                     listaVEHAlquilados.add(vehiculo);
                     for (Cliente cli : mapaClientes.values()) {
                         if (id.equalsIgnoreCase(cli.getDni())) {
-                            cli.setMatriculacochealquilado(matricula);
+                           // cli.setMatriculacochealquilado(matricula);
                             //set de matricula alquilado del cliente a matricula para asignar ese vehiculo
+
+                            cli.setvAlquilado(vehiculo);
+                            return true;
                         }
                     }
-                    if (vehiculo instanceof Coche) {
-                        Coche coche = (Coche) vehiculo;
 
-                    }
-
-                    return true;
                 }
             }
         }
         return false;
     }
 
-    public boolean returnVehiculo(String matricula) {
+    public boolean returnVehiculo(String matricula/*, */) {
         for (Vehiculo veh : listaVehiculos) {
             if (veh != null && matricula.equalsIgnoreCase(veh.getMatricula())) {
-                listaVEHAlquilados.remove(veh);
-                listaVehiculos.add(veh);
-                return true;
+               // listaVEHAlquilados.remove(veh);
+               // listaVehiculos.add(veh);
+                //set a null del v alquilado
+                for (Cliente cli : mapaClientes.values()){
+                    cli.setvAlquilado(null);
+
+                }
+                if (veh.getKm() > 500){
+
+                }
             }
+
+            //return true;
         }
         return false;
     }
