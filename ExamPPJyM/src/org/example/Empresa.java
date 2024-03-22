@@ -69,13 +69,23 @@ public class Empresa {
     }
 
 
-    public boolean alquilarVehiculo(String id, String matricula) {
+    public boolean alquilarVehiculo(String id, String matricula, String fechainicio, int kmsrecorr) {
         if (hayCliente(id)) {
             for (Vehiculo vehiculo : listaVehiculos) {
                 if (matricula.equalsIgnoreCase(vehiculo.getMatricula())) {
                     listaVehiculos.remove(vehiculo);
                     listaVEHAlquilados.add(vehiculo);
-                    //set de matricula alquilado del cliente a matricula para asignar ese vehiculo
+                    for (Cliente cli : mapaClientes.values()) {
+                        if (id.equalsIgnoreCase(cli.getDni())) {
+                            cli.setMatriculacochealquilado(matricula);
+                            //set de matricula alquilado del cliente a matricula para asignar ese vehiculo
+                        }
+                    }
+                    if (vehiculo instanceof Coche) {
+                        Coche coche = (Coche) vehiculo;
+
+                    }
+
                     return true;
                 }
             }
