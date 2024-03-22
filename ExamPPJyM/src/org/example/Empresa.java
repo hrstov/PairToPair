@@ -116,7 +116,7 @@ public class Empresa {
         }
         return false;
     }
-
+/*
     public boolean returnVehiculoConFecha(String matricula, Calendar fechaInicio, float km) {
         for (Vehiculo veh : listaVehiculos) {
             if (veh != null && matricula.equalsIgnoreCase(veh.getMatricula())) {
@@ -152,7 +152,7 @@ public class Empresa {
         }
         return false;
     }
-
+*/
 
     public String listaVehiculosGenerico(String tipo) {
         StringBuilder listavehiculosString = new StringBuilder();
