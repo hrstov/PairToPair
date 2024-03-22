@@ -117,42 +117,42 @@ public class Empresa {
         return false;
     }
 
-    /*
     public boolean returnVehiculoConFecha(String matricula, Calendar fechaInicio, float km) {
         for (Vehiculo veh : listaVehiculos) {
             if (veh != null && matricula.equalsIgnoreCase(veh.getMatricula())) {
                 //Si se pasa de dias iniciales que ha al principio ha alquilado hacer un 50% mas del precio
                 Calendar ahora = Calendar.getInstance();
-                if (ahora.compareTo(fechaInicio) == 0) {
+                if(ahora.compareTo(fechaInicio)==0){
                     veh.setKm(km);
                     if (veh.getKm() > 500) {
                         float precioMas = veh.getPrecio() + (veh.getPrecio() * 20 / 100);
                         return precioMas;
                     } else {
                         return veh.getPrecio();
+                            }
+                        }
                     }
+                    return 0;
                 }
-
-                return 0;
 
 
                 // listaVEHAlquilados.remove(veh);
                 // listaVehiculos.add(veh);
                 //set a null del v alquilado
-                for (Cliente cli : mapaClientes.values()) {
+                for (Cliente cli : mapaClientes.values()){
                     cli.setvAlquilado(null);
 
                 }
-                if (veh.getKm() > 500) {
+                if (veh.getKm() > 500){
 
-                }
-
-
-                return false;
+                }}
             }
+
+            //return true;
         }
+        return false;
     }
-*/
+
 
     public String listaVehiculosGenerico(String tipo) {
         StringBuilder listavehiculosString = new StringBuilder();
