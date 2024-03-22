@@ -8,9 +8,6 @@ public class Main {
         Scanner sc = new Scanner(System.in);
         boolean continuar = true;
         String opcion;
-        //-----------------------------------------------------------------------
-        //VERSION COMPILAR
-        //-----------------------------------------------------------------------
 
         Empresa empresa = new Empresa("Sofenkro INC.");
 
@@ -145,8 +142,6 @@ public class Main {
                                 Camión
                             """);
                     String tipoveh = sc.nextLine();
-
-                    //System.out.println(empresa.listaVehiculos(/*,*/tipoveh));
 
                     switch (tipoveh){
                         case "coche":

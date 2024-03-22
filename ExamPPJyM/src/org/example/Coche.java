@@ -1,4 +1,6 @@
-public class Coche extends Vehiculo{
+package org.example;
+
+public class Coche extends Vehiculo {
     private int plazas;
     private int puertas;
     private float volumenM;

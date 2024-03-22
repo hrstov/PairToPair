@@ -1,4 +1,5 @@
-public class Furgon extends Vehiculo{
+package org.example;
+public class Furgon extends org.example.Vehiculo {
     private float cargaMax;
     private int plazas;
 
