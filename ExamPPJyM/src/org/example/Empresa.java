@@ -7,15 +7,19 @@ public class Empresa {
     private String nombreempresa;
     private Map<String, Cliente> mapaClientes;
     private List<Vehiculo> listaVehiculos;
-    private List<Vehiculo> listaVEHAlquilados;
-    private Calendar fechaInicio;
+   // private List<Vehiculo> listaVEHAlquilados;
+    //private Calendar fechaInicio;
+
+    private List<Alquiler> listaAlquileres;
 
 
     public Empresa(String nombreempresa) {
         this.nombreempresa = nombreempresa;
         this.mapaClientes = new HashMap<>();
         this.listaVehiculos = new ArrayList<>();
-        this.listaVEHAlquilados = new ArrayList<>();
+        //this.listaVEHAlquilados = new ArrayList<>();
+
+        this.listaAlquileres = new ArrayList<>();
 
     }
 
@@ -43,6 +47,7 @@ public class Empresa {
         }
         return false;
     }
+    /*
     public boolean hayVehiculoAlquilado(String matricula) {
         for (Vehiculo v : listaVEHAlquilados) {
             if (matricula.equalsIgnoreCase(v.getMatricula())) {
@@ -51,6 +56,7 @@ public class Empresa {
         }
         return false;
     }
+     */
 
     public boolean addVehiculo(Vehiculo vehiculo) {
         if (!hayVehiculo(vehiculo.getMatricula())) {
@@ -76,12 +82,26 @@ public class Empresa {
     }
 
 
+    public boolean rentVehicle(String mat, Alquiler alq,Calendar fechaInicio/*en el cobro fechafinal y se compara*/, int kms, String dni){
+        //pensando de manera inicial el método
+        for (Vehiculo v : listaVehiculos){
+            if (v != null && mat.equalsIgnoreCase(v.getMatricula()) && fechaInicio != null
+                && kms > 0 && hayCliente(dni)){
+                listaAlquileres.add(alq);//???
+                listaVehiculos.remove(v);
+                return true;
+            }
+        }
+
+        return false;
+    }
+
     public boolean alquilarVehiculo(String id, String matricula, String fechainicio/*no se usa de momento*/, int dia) {
         if (hayCliente(id)) {
             for (Vehiculo vehiculo : listaVehiculos) {
                 if (matricula.equalsIgnoreCase(vehiculo.getMatricula())) {
                     listaVehiculos.remove(vehiculo);
-                    listaVEHAlquilados.add(vehiculo);
+                    //listaVEHAlquilados.add(vehiculo);
                     for (Cliente cli : mapaClientes.values()) {
                         if (id.equalsIgnoreCase(cli.getDni())) {
                            // cli.setMatriculacochealquilado(matricula);
