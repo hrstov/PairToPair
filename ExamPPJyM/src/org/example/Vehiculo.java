@@ -1,5 +1,7 @@
 package org.example;
 
+import java.util.Calendar;
+
 public class Vehiculo {
     private String matricula;
     private String modelo;
@@ -7,6 +9,8 @@ public class Vehiculo {
     private float km;
     private float precio;
     private String tipoMotor;
+    private Calendar fechaInicio;
+    private Calendar fechaFin;
 
     public Vehiculo(String matricula, String modelo, String marca, float km, float precio, String tipoMotor) {
         this.matricula = matricula;
@@ -66,4 +70,21 @@ public class Vehiculo {
     public void setTipoMotor(String tipoMotor) {
         this.tipoMotor = tipoMotor;
     }
+
+    public Calendar getFechaInicio() {
+        return fechaInicio;
+    }
+
+    public void setFechaInicio(Calendar fechaInicio) {
+        this.fechaInicio = fechaInicio;
+    }
+
+    public Calendar getFechaFin() {
+        return fechaFin;
+    }
+
+    public void setFechaFin(Calendar fechaFin) {
+        this.fechaFin = fechaFin;
+    }
+
 }
