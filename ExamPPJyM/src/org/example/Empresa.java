@@ -66,21 +66,6 @@ public class Empresa {
         return false;
     }
 
-    public float cobro(Vehiculo vehiculo, String matricula, float km) {
-        for (Vehiculo v : listaVehiculos) {
-            if (matricula.equalsIgnoreCase(v.getMatricula())) {
-                v.setKm(km);
-                if (v.getKm() > 500) {
-                    float precioMas = v.getPrecio() + (v.getPrecio() * 20 / 100);
-                    return precioMas;
-                } else {
-                    return v.getPrecio();
-                }
-            }
-        }
-        return 0;
-    }
-
 
     public boolean rentVehicle(String mat, Alquiler alq, Calendar fechaInicio/*en el cobro fechafinal y se compara*/, int kms, String dni) {
         //pensando de manera inicial el método
@@ -116,7 +101,7 @@ public class Empresa {
         }
         return false;
     }
-
+/*
     public boolean returnVehiculo(String matricula) {
         for (Vehiculo veh : listaVehiculos) {
             if (veh != null && matricula.equalsIgnoreCase(veh.getMatricula())) {
@@ -136,27 +121,49 @@ public class Empresa {
         }
         return false;
     }
-/*
-    public boolean returnVehiculoConFecha(String matricula, Calendar fechaInicio, float km) {
-        for (Vehiculo veh : listaVehiculos) {
-            if (veh != null && matricula.equalsIgnoreCase(veh.getMatricula())) {
-                //Si se pasa de dias iniciales que ha al principio ha alquilado hacer un 50% mas del precio
-                Calendar ahora = Calendar.getInstance();
-                if(ahora.compareTo(fechaInicio)==0){
-                    veh.setKm(km);
-                    if (veh.getKm() > 500) {
-                        float precioMas = veh.getPrecio() + (veh.getPrecio() * 20 / 100);
+*/
+
+    public float cobro (String matricula, float km) {
+        for (Vehiculo v : listaVehiculos) {
+            if (v != null && matricula.equalsIgnoreCase(v.getMatricula())) {
+                for (Cliente cli : mapaClientes.values()){
+                    cli.setvAlquilado(null);
+                    v.setKm(km);
+                    if (v.getKm() > 500) {
+                        float precioMas = v.getPrecio() + (v.getPrecio() * 20 / 100);
                         return precioMas;
                     } else {
-                        return veh.getPrecio();
-                            }
-                        }
+                        return v.getPrecio();
                     }
-                    return 0;
                 }
+            }
+        }
+        return 0;
+    }
+    public double returnVehiculoConFecha(String matricula, Calendar fechaFinActualizada, float km) {
+        for (Vehiculo veh : listaVehiculos) {
+            if (veh != null && matricula.equalsIgnoreCase(veh.getMatricula())) {
+                Calendar fechaInicioo = veh.getFechaInicio();
+                Calendar fechaPrincipioFin = veh.getFechaFin();
+                long diferenciaMiliSegundos = fechaPrincipioFin.getTimeInMillis() - fechaInicioo.getTimeInMillis();
+                long difereciaDiasAntes = diferenciaMiliSegundos / (1000 * 60 * 60 * 24);
+                if (fechaPrincipioFin.equals(fechaFinActualizada) || fechaPrincipioFin.before(fechaFinActualizada)) {
+                    return cobro(matricula, km);
 
+                }else {
+                    //Si se pasa de dias iniciales que ha al principio ha alquilado hacer un 50% mas del precio
+                    long diferenciaMiliSegundosActualizado = veh.getFechaFin().getTimeInMillis() - fechaPrincipioFin.getTimeInMillis();
+                    long difereciaDiasActualizado = diferenciaMiliSegundosActualizado / (1000 * 60 * 60 * 24);
+                    if (difereciaDiasAntes < difereciaDiasActualizado) {
+                        return cobro(matricula, km) * 1.5;
+                        
+                    }
+                }
+            }
+       }return 0;
+    }
 
-                // listaVEHAlquilados.remove(veh);
+   /*             // listaVEHAlquilados.remove(veh);
                 // listaVehiculos.add(veh);
                 //set a null del v alquilado
                 for (Cliente cli : mapaClientes.values()){
