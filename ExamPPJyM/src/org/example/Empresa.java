@@ -7,7 +7,7 @@ public class Empresa {
     private String nombreempresa;
     private Map<String, Cliente> mapaClientes;
     private List<Vehiculo> listaVehiculos;
-   // private List<Vehiculo> listaVEHAlquilados;
+    // private List<Vehiculo> listaVEHAlquilados;
     //private Calendar fechaInicio;
 
     private List<Alquiler> listaAlquileres;
@@ -82,11 +82,11 @@ public class Empresa {
     }
 
 
-    public boolean rentVehicle(String mat, Alquiler alq,Calendar fechaInicio/*en el cobro fechafinal y se compara*/, int kms, String dni){
+    public boolean rentVehicle(String mat, Alquiler alq, Calendar fechaInicio/*en el cobro fechafinal y se compara*/, int kms, String dni) {
         //pensando de manera inicial el método
-        for (Vehiculo v : listaVehiculos){
+        for (Vehiculo v : listaVehiculos) {
             if (v != null && mat.equalsIgnoreCase(v.getMatricula()) && fechaInicio != null
-                && kms > 0 && hayCliente(dni)){
+                    && kms > 0 && hayCliente(dni)) {
                 listaAlquileres.add(alq);//???
                 listaVehiculos.remove(v);
                 return true;
@@ -104,7 +104,7 @@ public class Empresa {
                     //listaVEHAlquilados.add(vehiculo);
                     for (Cliente cli : mapaClientes.values()) {
                         if (id.equalsIgnoreCase(cli.getDni())) {
-                           // cli.setMatriculacochealquilado(matricula);
+                            // cli.setMatriculacochealquilado(matricula);
                             //set de matricula alquilado del cliente a matricula para asignar ese vehiculo
 
                             cli.setvAlquilado(vehiculo);
@@ -120,14 +120,14 @@ public class Empresa {
     public boolean returnVehiculo(String matricula) {
         for (Vehiculo veh : listaVehiculos) {
             if (veh != null && matricula.equalsIgnoreCase(veh.getMatricula())) {
-               // listaVEHAlquilados.remove(veh);
-               // listaVehiculos.add(veh);
+                // listaVEHAlquilados.remove(veh);
+                // listaVehiculos.add(veh);
                 //set a null del v alquilado
-                for (Cliente cli : mapaClientes.values()){
+                for (Cliente cli : mapaClientes.values()) {
                     cli.setvAlquilado(null);
 
                 }
-                if (veh.getKm() > 500){
+                if (veh.getKm() > 500) {
 
                 }
             }

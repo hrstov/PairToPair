@@ -202,7 +202,7 @@ public class Main {
                     if (empresa.hayCliente(dnidev)) {
                         System.out.print("Ahora la matrícula del vehículo a devolver: ");
                         String matrdev = sc.nextLine();
-                        if (empresa.hayVehiculoAlquilado(matrdev)) {
+                      //  if (empresa.hayVehiculoAlquilado(matrdev)) {
 
                             /*fecha de entrega, se ha devuelto tal dia o usar now de calendar (usar metodo pasar String a fecha)*/
 
@@ -218,7 +218,7 @@ public class Main {
 */
 
 
-                        } else System.out.println("El vehículo no está creado todavía.");
+                        //} else System.out.println("El vehículo no está creado todavía.");
                     } else System.out.println("El cliente no existe.");
 
                     break;
