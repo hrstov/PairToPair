@@ -19,7 +19,7 @@ public class Main {
                     3. Alquilar vehiculo determinado para un cliente determinado  
                     4. Mostrar lista de vehiculos
                     5. Devolver vehículo y mostrar precio a cobrar
-                                        
+                    6. Devolver vehículo y mostrar precio a cobrar incluyendo fecha                 
                     """);
 
             opcion = sc.nextLine();
@@ -222,6 +222,39 @@ public class Main {
                     } else System.out.println("El cliente no existe.");
 
                     break;
+
+                case "6":
+                    System.out.print("Introduzca el dni del cliente: ");
+                    dni = sc.nextLine();
+                    if (empresa.hayCliente(dni)) {
+                        System.out.print("Ahora la matrícula del vehículo a devolver: ");
+                        String matricula = sc.nextLine();
+                        System.out.print("Ahora la fecha del fin de alquiler del vehículo a devolver: ");
+                        //Calendar fechaFin = sc.nextLine();
+                        System.out.print("Ahora la fecha del fin de alquiler del vehículo a devolver: ");
+                        float km = Integer.valueOf(sc.nextLine());
+                        // if (empresa.returnVehiculoConFecha(matricula, fechaFin, km)) {
+                        // if (empresa.hayVehiculoAlquilado(matricula)) {
+
+                        /*fecha de entrega, se ha devuelto tal dia o usar now de calendar (usar metodo pasar String a fecha)*/
+
+
+/*
+                            System.out.print("Indique la fecha de inicio: ");
+                            String fechainicio = sc.nextLine();
+                            System.out.print("Ahora el número de días que va a ser alquilado: ");
+                            int diasalq = Integer.valueOf(sc.nextLine());
+                            if (empresa.alquilarVehiculo(dnidev, matrdev, fechainicio, diasalq)) {
+                                System.out.println("Reserva realizada con éxito.");
+                            } else System.out.println("No se ha podido realizar la reserva.");
+*/
+
+
+                        //} else System.out.println("El vehículo no está creado todavía.");
+                    } else System.out.println("El cliente no existe.");
+
+                    break;
+
 
                 default:
                     System.out.println("Número fuera de parámetros.");
