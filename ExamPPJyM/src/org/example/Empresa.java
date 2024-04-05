@@ -7,6 +7,7 @@ public class Empresa {
     private String nombreempresa;
     private Map<String, Cliente> mapaClientes;
     private List<Vehiculo> listaVehiculos;
+
     // private List<Vehiculo> listaVEHAlquilados;
     //private Calendar fechaInicio;
 
